@@ -32,5 +32,9 @@ func main() {
 		serveWs(ctx.Writer, ctx.Request, roomId)
 	})
 
-	router.Run("localhost:8080")
+	router.GET("/ws/test", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, gin.H{"test": "live"})
+	})
+
+	router.Run("192.168.0.184:3000")
 }
